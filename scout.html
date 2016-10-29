@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>BScouts</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/sb-admin.css" rel="stylesheet">
+
+    <!-- Morris Charts CSS -->
+    <link href="css/plugins/morris.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- ESRI css -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/leaflet/0.7.3/leaflet.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/Leaflet/Leaflet.markercluster/v0.4.0/dist/MarkerCluster.Default.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/Leaflet/Leaflet.markercluster/v0.4.0/dist/MarkerCluster.css">
+
+    <!-- Custom CSS -->
+    <link href="css/styles.css" rel="stylesheet">
+    
+</head>
+
+<body>
+
+    <div id="wrapper">      
+        <div class="container-fluid"> 
+            <!-- Page Heading -->
+            <div class="row">
+                <h1 style = "padding-right: 50px"> BScouts 
+                <div style="float:right;">
+                    <a href="#" id="logout_anchor"style = "font-size: large" ><i class="fa fa-arrow-left"></i> Go Back</a>
+                </div>
+                </h1> 
+            </div>
+            <!-- /.row -->
+            
+            <div class = "row">
+                <div class="col-lg-9 map_content">
+                    <div id="map" style="height:500px;"></div>
+                </div>
+                
+                <div class = "col-lg-3"> 
+                    <div id="revenuepiechart"></div>
+                    <div id="crowdpiechart"></div>
+                </div>
+            
+            </div>
+            
+            
+            
+        
+        </div>
+            
+        
+    </div>
+    <!-- /#wrapper -->
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+    
+    <!-- D3 -->
+    <script src="https://d3js.org/d3.v4.js"></script>
+
+    <!-- Load Esri Leaflet from CDN -->
+    <script src="//cdn.jsdelivr.net/leaflet/0.7.3/leaflet.js"></script>
+    <script src="//cdn.jsdelivr.net/leaflet.esri/1.0.0/esri-leaflet.js"></script>
+    <script src="https://cdn.rawgit.com/Leaflet/Leaflet.markercluster/v0.4.0/dist/leaflet.markercluster.js"></script>
+    <script src="https://cdn.jsdelivr.net/leaflet.esri.clustered-feature-layer/1.0.2/esri-leaflet-clustered-feature-layer.js"></script>
+
+    <script src="js/scout.js"></script> 
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+    <script>
+    google.charts.load('current', {'packages':['corechart']});
+    google.charts.setOnLoadCallback(drawChart);
+    function drawChart() { 
+        var data = google.visualization.arrayToDataTable([
+      ['Task', 'Hours per Day'],
+      ['Work',     11],
+      ['Eat',      2],
+      ['Commute',  2],
+      ['Watch TV', 2],
+      ['Sleep',    7]
+    ]);
+
+    var options = {
+      title: 'Revenue generated'
+    };
+
+    var chart = new google.visualization.PieChart(document.getElementById('revenuepiechart'));
+
+    chart.draw(data, options);
+    }
+    </script>
+    
+    <script>
+    google.charts.load('current', {'packages':['corechart']});
+    google.charts.setOnLoadCallback(drawChart);
+    function drawChart() { 
+        var data = google.visualization.arrayToDataTable([
+      ['Task', 'Hours per Day'],
+      ['Work',     11],
+      ['Eat',      2],
+      ['Commute',  2],
+      ['Watch TV', 2],
+      ['Sleep',    7]
+    ]);
+
+    var options = {
+      title: 'Population Pie Chart'
+    };
+
+    var chart = new google.visualization.PieChart(document.getElementById('crowdpiechart'));
+
+    chart.draw(data, options);
+    }
+    </script>
+    
+    
+</body>
+
+</html>
