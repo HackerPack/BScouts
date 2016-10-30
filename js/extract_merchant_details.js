@@ -1,16 +1,18 @@
 var apiKey = "37e025004d343eb5fbb69e6810b8cf18";
-var merchantId = "57cf75cea73e494d8675ec49";
+var merchantId = "";
 var customerPurchases = {};
 var zipAmountMap = {};
-function getMerchantDetails() {
+function getMerchantDetails(callback_success, callback_failure) {
 	$.ajax({
 		url : "http://api.reimaginebanking.com/merchants/" + merchantId + "?key=" + apiKey,
 		type : 'GET',
 		success : function(data) {
 			merchantLat = data.geocode.lat;
 			merchantLon = data.geocode.lng;
+			if (callback_success ) callback_success();
 		},
 		error: function(data) {
+			if (callback_failure ) callback_failure();
 		}
 	});
 }
@@ -79,7 +81,7 @@ function processLoadedData(zipAmountMap) {
 	loadMap(csvdata, ta, tc);
 }
 
-$(document).ready(function() {
+function loadAllDetails() {
 	getMerchantDetails();
 	$.ajax({
 		url : "http://api.reimaginebanking.com/merchants/" + merchantId + "/purchases?key=" + apiKey,
@@ -130,4 +132,4 @@ $(document).ready(function() {
 			});
 		}
 	});
-});
+}

@@ -1,9 +1,21 @@
 
 #mapCanvas {
-  height: 500px;
+  height:600px;
  }
 
- 
+ #mapCanvas_root {
+   height:600px;
+ }
+
+body, .row {
+  background:#c8cbd1;
+}
+
+#wrapper {
+  margin-left: 0px;
+  padding-left:10px;
+  background:#c8cbd1;
+}
 .arc text {
   font: 10px sans-serif;
   text-anchor: middle;
@@ -11,4 +23,21 @@
 
 .arc path {
   stroke: #fff;
+}
+
+.map_content {
+    padding:10px;
+    min-height:600px;
+    background:#c8cbd1;
+}
+
+.graph_content {
+  padding:10px;
+  min-height:600px;
+  background:#c8cbd1;
+}
+
+#loadingDiv img {
+  border:5px dashed #686b70;
+  border-radius:4px;
 }

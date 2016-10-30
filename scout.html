@@ -40,32 +40,27 @@
         <div class="container-fluid">
             <!-- Page Heading -->
             <div class="row">
-                <h1 style = "padding-right: 50px"> BScouts
-                <div style="float:right;">
-                    <a href="#" id="logout_anchor"style = "font-size: large" ><i class="fa fa-arrow-left"></i> Go Back</a>
+                <span style='font-size:25px;'> BScouts </span>
+                <div style="float:right; padding-right:50px; padding-bottom:20px;">
+                    <a href="./index.html" id="logout_anchor"style = "font-size: large" ><i class="fa fa-arrow-left"></i> Go Back</a>
                 </div>
-                </h1>
             </div>
             <!-- /.row -->
 
             <div class = "row">
                 <div class="col-lg-9 map_content">
-                    <div id="mapCanvas" style="height:100%;"></div>
+                    <div id="mapCanvas" style="height:600px;"></div>
                 </div>
 
-                <div class = "col-lg-3">
+                <div class = "col-lg-3 graph_content">
                     <div id="revenuepiechart"></div>
                     <div id="crowdpiechart"></div>
                 </div>
-
             </div>
-
-
-
-
+            <div class="row" style="width:100%; height:100%; position:fixed; top:0px; left:0px; background: #fcfcfc;" id='loadingDiv'>
+                <img src="./img/loading.gif" style="margin-left:43%;margin-top:15%; "/>
+            </div>
         </div>
-
-
     </div>
     <!-- /#wrapper -->
 
@@ -95,6 +90,10 @@
     </script>
 
     <script>
+      $(document).ready(function() {
+        merchantId = window.location.href.split("?merchant=")[1];
+        loadAllDetails();
+      });
     </script>
 
 
