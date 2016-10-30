@@ -8,13 +8,14 @@
  }
 
 body, .row {
-  background:#c8cbd1;
+  background:black;
+  color:#efefef;
 }
 
 #wrapper {
   margin-left: 0px;
   padding-left:10px;
-  background:#c8cbd1;
+  background:black;
 }
 .arc text {
   font: 10px sans-serif;
@@ -28,16 +29,20 @@ body, .row {
 .map_content {
     padding:10px;
     min-height:600px;
-    background:#c8cbd1;
-}
+    background:black;
+}#c8cbd1
 
 .graph_content {
   padding:10px;
   min-height:600px;
-  background:#c8cbd1;
+  background:black;
 }
 
 #loadingDiv img {
   border:5px dashed #686b70;
   border-radius:4px;
 }
+
+ #revenuepiechart, #crowdpiechart {
+   color:#efefef;
+ }

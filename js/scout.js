@@ -348,7 +348,12 @@ function drawChart(divid, data, title) {
 
 		var options = {
 			title: title,
-			backgroundColor : '#c8cbd1'
+			backgroundColor : 'black',
+			colors: ['#037a21', '#189b39', '#7ed38b', '#5cb272'],
+			titleTextStyle: { color: 'white' },
+			legend: {
+        textStyle: { color: 'white' }
+    	}
 		};
 
 		var chart = new google.visualization.PieChart(document.getElementById(divid));
