@@ -61,10 +61,12 @@ function processLoadedData(zipAmountMap) {
 	topCusts = [];
 	csvdata = "zippoi,latitude,longitude,customer_count,amount\n";
 	$.each(zipAmountMap, function(k, v) {
-		c = k + "," + Number(zips[k][0]) + "," + Number(zips[k][1]) + "," + v['ccount'] + "," + v['amount'] + "\n";
-		csvdata += c
-		topAmounts.push([k, v['amount']]);
-		topCusts.push([k, v['ccount']]);
+		if (k in zips) {
+			c = k + "," + Number(zips[k][0]) + "," + Number(zips[k][1]) + "," + v['ccount'] + "," + v['amount'] + "\n";
+			csvdata += c
+			topAmounts.push([k, v['amount']]);
+			topCusts.push([k, v['ccount']]);
+		}
 	});
 
 	topAmounts.sort(sortFunction);
