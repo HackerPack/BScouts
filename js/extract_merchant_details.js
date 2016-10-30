@@ -2,7 +2,18 @@ var apiKey = "37e025004d343eb5fbb69e6810b8cf18";
 var merchantId = "57cf75cea73e494d8675ec49";
 var customerPurchases = {};
 var zipAmountMap = {};
-
+function getMerchantDetails() {
+	$.ajax({
+		url : "http://api.reimaginebanking.com/merchants/" + merchantId + "?key=" + apiKey,
+		type : 'GET',
+		success : function(data) {
+			merchantLat = data.geocode.lat;
+			merchantLon = data.geocode.lng;
+		},
+		error: function(data) {
+		}
+	});
+}
 function accountIdToCustomerId(account_id, callback, callback_fail) {
 	$.ajax({
 		url : "http://api.reimaginebanking.com/accounts/" + account_id + "?key=" + apiKey,
@@ -34,13 +45,42 @@ function getCustomerDetails(account_id, callback, callback_fail) {
 }
 vals  = [];
 
+function sortFunction(a, b) {
+    if (a[0] === b[0]) {
+        return 0;
+    }
+    else {
+        return (a[0] < b[0]) ? -1 : 1;
+    }
+}
+
 function processLoadedData(zipAmountMap) {
+	topAmounts = [];
+	topCusts = [];
+	csvdata = "zippoi,latitude,longitude,customer_count,amount\n";
 	$.each(zipAmountMap, function(k, v) {
+		c = k + "," + Number(zips[k][0]) + "," + Number(zips[k][1]) + "," + v['ccount'] + "," + v['amount'] + "\n";
+		csvdata += c
+		topAmounts.push([k, v['amount']]);
+		topCusts.push([k, v['ccount']]);
 	});
+
+	topAmounts.sort(sortFunction);
+	topCusts.sort(sortFunction);
+
+	ta = [['Zip', 'Revenue']]
+	tc = [['Zip', 'Population']]
+
+	for (i = 0 ; i < 4 ; i++) {
+		ta.push(topAmounts[i]);
+		tc.push(topCusts[i]);
+	}
+
+	loadMap(csvdata, ta, tc);
 }
 
 $(document).ready(function() {
-	return;
+	getMerchantDetails();
 	$.ajax({
 		url : "http://api.reimaginebanking.com/merchants/" + merchantId + "/purchases?key=" + apiKey,
 		type : 'GET',

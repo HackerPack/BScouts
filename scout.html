@@ -24,7 +24,11 @@
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
     <!-- ESRI css -->
-    <link rel="stylesheet" href="https://js.arcgis.com/3.18/esri/css/esri.css">
+    <link rel="stylesheet" href="https://js.arcgis.com/3.18/dijit/themes/tundra/tundra.css" />
+    <link rel="stylesheet" href="https://js.arcgis.com/3.18/esri/css/esri.css" />
+    <link rel="stylesheet" href="css/layout.css" />
+
+
     <!-- Custom CSS -->
     <link href="css/styles.css" rel="stylesheet">
 
@@ -46,7 +50,7 @@
 
             <div class = "row">
                 <div class="col-lg-9 map_content">
-                    <div id="mapDiv" style="height:100%;"></div>
+                    <div id="mapCanvas" style="height:100%;"></div>
                 </div>
 
                 <div class = "col-lg-3">
@@ -68,62 +72,29 @@
     <!-- jQuery -->
     <script src="js/jquery-3.1.1.min.js"></script>
 
-    <!-- D3 -->
-    <script src="https://d3js.org/d3.v4.js"></script>
-
-    <!-- Load Esri Leaflet from CDN -->
-    <link rel="stylesheet" href="https://js.arcgis.com/4.1/esri/css/main.css">
+    <!-- esri -->
     <script src="https://js.arcgis.com/3.18/"></script>
 
-      <script src="js/scout.js"></script>
+    <!-- custom scripts -->
+    <script>
+      var merchantLat = 0;
+      var merchantLon = 0;
+    </script>
+
+    <script src="js/zipcode.js"></script>
+    <script src="js/scout.js"></script>
     <script src="js/extract_merchant_details.js"></script>
+
+    <!-- charts -->
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
     <script>
-    loadMap();
     google.charts.load('current', {'packages':['corechart']});
-    google.charts.setOnLoadCallback(drawChart);
-    function drawChart() {
-        var data = google.visualization.arrayToDataTable([
-      ['Task', 'Hours per Day'],
-      ['Work',     11],
-      ['Eat',      2],
-      ['Commute',  2],
-      ['Watch TV', 2],
-      ['Sleep',    7]
-    ]);
+    google.charts.setOnLoadCallback(function() {});
 
-    var options = {
-      title: 'Revenue generated'
-    };
-
-    var chart = new google.visualization.PieChart(document.getElementById('revenuepiechart'));
-
-    chart.draw(data, options);
-  }
     </script>
 
     <script>
-    google.charts.load('current', {'packages':['corechart']});
-    google.charts.setOnLoadCallback(drawChart);
-    function drawChart() {
-        var data = google.visualization.arrayToDataTable([
-      ['Task', 'Hours per Day'],
-      ['Work',     11],
-      ['Eat',      2],
-      ['Commute',  2],
-      ['Watch TV', 2],
-      ['Sleep',    7]
-    ]);
-
-    var options = {
-      title: 'Population Pie Chart'
-    };
-
-    var chart = new google.visualization.PieChart(document.getElementById('crowdpiechart'));
-
-    chart.draw(data, options);
-    }
     </script>
 
 
