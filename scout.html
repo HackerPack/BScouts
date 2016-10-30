@@ -5,7 +5,7 @@
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
     <meta name="description" content="">
     <meta name="author" content="">
 
@@ -24,72 +24,66 @@
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
     <!-- ESRI css -->
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/leaflet/0.7.3/leaflet.css" />
-    <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/Leaflet/Leaflet.markercluster/v0.4.0/dist/MarkerCluster.Default.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/Leaflet/Leaflet.markercluster/v0.4.0/dist/MarkerCluster.css">
-
+    <link rel="stylesheet" href="https://js.arcgis.com/3.18/esri/css/esri.css">
     <!-- Custom CSS -->
     <link href="css/styles.css" rel="stylesheet">
-    
+
 </head>
 
 <body>
 
-    <div id="wrapper">      
-        <div class="container-fluid"> 
+    <div id="wrapper">
+        <div class="container-fluid">
             <!-- Page Heading -->
             <div class="row">
-                <h1 style = "padding-right: 50px"> BScouts 
+                <h1 style = "padding-right: 50px"> BScouts
                 <div style="float:right;">
                     <a href="#" id="logout_anchor"style = "font-size: large" ><i class="fa fa-arrow-left"></i> Go Back</a>
                 </div>
-                </h1> 
+                </h1>
             </div>
             <!-- /.row -->
-            
+
             <div class = "row">
                 <div class="col-lg-9 map_content">
-                    <div id="map" style="height:500px;"></div>
+                    <div id="mapDiv" style="height:100%;"></div>
                 </div>
-                
-                <div class = "col-lg-3"> 
+
+                <div class = "col-lg-3">
                     <div id="revenuepiechart"></div>
                     <div id="crowdpiechart"></div>
                 </div>
-            
+
             </div>
-            
-            
-            
-        
+
+
+
+
         </div>
-            
-        
+
+
     </div>
     <!-- /#wrapper -->
 
     <!-- jQuery -->
-    <script src="js/jquery.js"></script>
+    <script src="js/jquery-3.1.1.min.js"></script>
 
-    <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
-    
     <!-- D3 -->
     <script src="https://d3js.org/d3.v4.js"></script>
 
     <!-- Load Esri Leaflet from CDN -->
-    <script src="//cdn.jsdelivr.net/leaflet/0.7.3/leaflet.js"></script>
-    <script src="//cdn.jsdelivr.net/leaflet.esri/1.0.0/esri-leaflet.js"></script>
-    <script src="https://cdn.rawgit.com/Leaflet/Leaflet.markercluster/v0.4.0/dist/leaflet.markercluster.js"></script>
-    <script src="https://cdn.jsdelivr.net/leaflet.esri.clustered-feature-layer/1.0.2/esri-leaflet-clustered-feature-layer.js"></script>
+    <link rel="stylesheet" href="https://js.arcgis.com/4.1/esri/css/main.css">
+    <script src="https://js.arcgis.com/3.18/"></script>
 
-    <script src="js/scout.js"></script> 
+      <script src="js/scout.js"></script>
+    <script src="js/extract_merchant_details.js"></script>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
     <script>
+    loadMap();
     google.charts.load('current', {'packages':['corechart']});
     google.charts.setOnLoadCallback(drawChart);
-    function drawChart() { 
+    function drawChart() {
         var data = google.visualization.arrayToDataTable([
       ['Task', 'Hours per Day'],
       ['Work',     11],
@@ -106,13 +100,13 @@
     var chart = new google.visualization.PieChart(document.getElementById('revenuepiechart'));
 
     chart.draw(data, options);
-    }
+  }
     </script>
-    
+
     <script>
     google.charts.load('current', {'packages':['corechart']});
     google.charts.setOnLoadCallback(drawChart);
-    function drawChart() { 
+    function drawChart() {
         var data = google.visualization.arrayToDataTable([
       ['Task', 'Hours per Day'],
       ['Work',     11],
@@ -131,8 +125,8 @@
     chart.draw(data, options);
     }
     </script>
-    
-    
+
+
 </body>
 
 </html>
